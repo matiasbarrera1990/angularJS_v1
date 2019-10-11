@@ -1,0 +1,35 @@
+<div class="modal-header" style="background-color:#AED6F1;">
+  <button type="button" class="close" ng-click="cancel()" aria-hidden="true">×</button>
+  <h3 class="modal-title">Seleccioná un rango de tiempo (desde/hasta) para conocer las funciones entre esas fechas.</h3>
+</div>
+<div style=" background-color: #eaece5" class="modal-body">
+
+  <form>
+    <div style="display:inline-block; min-height:290px;">
+      <datepicker ng-model="fecha1" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+    </div>
+
+    <div style="display:inline-block; min-height:290px;">
+      <datepicker ng-model="fecha2" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+    </div>
+
+    <h4>Desde la fecha </h4>
+    <div class="row">
+      <div class="col-md-6">
+        <input type="date" class="form-control" datepicker-popup ng-model="fecha1"   datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"  />
+      </div>
+    </div>
+    <h4>Hasta la fecha </h4>
+    <div class="row">
+      <div class="col-md-6">
+        <input type="date" class="form-control" datepicker-popup ng-model="fecha2"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"  />
+      </div>
+    </div>
+
+    <div style="margin-top: 15px;" class="modal-footer">
+    <button class="btn btn-primary" ng-click="buscarEspectaculosEntreFechas(fecha1,fecha2)">Seleccionar fechas...</button>
+   </div>
+
+  </form>
+</div>
+

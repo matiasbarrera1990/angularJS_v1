@@ -1,0 +1,38 @@
+<label>Ingrese los datos de los sectores</label>
+<br><br>
+
+
+<div class="row">
+	<div ng-repeat="sector in teatro.sectores">
+		<div class="row">
+			<div class="col-xs-3 col-xs-offset-1" >
+				<div class="form-group">
+				    <label for="nombreSector">Nombre</label>
+				    <input type="text" class="form-control" name="nombreSector" ng-model="sector.nombre" placeholder="Ingrese nombre" required>
+				</div>
+			</div>
+			<div class="col-xs-3" >
+				<div class="form-group">
+				    <label for="precio">Precio</label>
+				    <input type="number" step="0.1" min="0" class="form-control" name="precio" ng-model="sector.monto" placeholder="Ingrese monto" required>
+				</div>
+			</div>
+			<div class="col-xs-3" >
+				<div class="form-group">
+				    <label for="filas">Filas</label>
+				    <input type="number" class="form-control" name="filas" min="1" ng-change=crearFilas(sector) ng-model="sector.nFilas" placeholder="Ingrese nro. de filas" required>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<br><br>
+<div class="form-group row">
+<div class="col-xs-6 col-xs-offset-3">
+    <button ng-click="controlSlider()" ng-disabled="teatroForm.nombreSector.$error.required || teatroForm.precio.$error.required || teatroForm.filas.$error.required" ui-sref="sector-crear.confirmar" class="btn btn-block btn-info">
+    Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </button>
+</div>
+</div>

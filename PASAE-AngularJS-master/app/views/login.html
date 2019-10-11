@@ -1,0 +1,24 @@
+<div style="background-color:#eaece5" class="modal-header">
+	<button type="button" class="close" ng-click="close()" aria-hidden="true">×</button>
+	<h2 class="text-center"><img style="background-color:black" src="images/logo.png" class="img-circle"><br>Login</h2>
+</div>
+<div class="modal-body row">
+	<h6 class="text-center">COMPLETE LOS CAMPOS</h6>
+	<form name="formLogin" class="css-form col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0" ng-submit="login()" >
+	    <div class="form-group">
+	        <input type="email"  class="form-control input-lg" name="username" ng-model="user.username" placeholder="Email" required="">
+	    </div>
+
+     <div class="form-group">
+	        <input type="password" class="form-control input-lg" ng-model="user.password" placeholder="Password" required>
+	    </div>
+	    <div class="form-group">
+	        <input type="submit" class="btn btn-danger btn-lg btn-block" value="Ingresar" />
+	        <i class="spinner tu-icono-fav" ng-show="loading"></i>
+	        <span class="pull-right"><a  ng-click="register()">Registrarse</a></span><span><a href="#">Necesita ayuda?</a></span>
+	    </div>
+	</form>
+</div>
+<div style="background-color:#eaece5" class="modal-footer">
+	<h6 class="text-center"><a href="">Privacy is important to us. Click here to read why.</a></h6>
+</div>

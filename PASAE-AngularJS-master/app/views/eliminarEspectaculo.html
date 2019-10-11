@@ -1,0 +1,19 @@
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Confirmar eliminación</h4>
+      </div>
+
+      <div class="modal-body">
+        <p>¿Está seguro que desea eliminar el espectáculo seleccionado?</p>
+        <p class="debug-url"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="cancel()" data-dismiss="modal">Cancelar</button>
+        <button type="button" ng-click="confirmDeleteEspectaculo(espectaculoSelected)" class="btn btn-danger btn-ok">ELIMINAR</button>
+      </div>
+    </div>
+
+

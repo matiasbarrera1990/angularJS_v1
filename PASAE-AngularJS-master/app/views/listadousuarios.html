@@ -1,0 +1,65 @@
+<div class="container"> 
+  <div class="input-form-container"> 
+    <a ng-show="rol=='empleado'" type="button" href="#/admin/agregarempleado" class="btn btn-lg pull-left btn-success">  <i
+      class="glyphicon glyphicon-plus">  </i> Crear nuevo empleado
+    </a>
+      <p></p> 
+    <table class="table table-striped"> 
+      <thead> 
+      <tr> 
+        <th colspan="5"><input ng-change="search()" ng-model="searchValue"  class="form-control" placeholder="Búsqueda global ..." type="text"/></th>
+         
+      </tr>
+       
+      <tr> 
+        <th></th>
+        <th ng-click="sort('apellido');reverseSort = !reverseSort">Apellido
+          <span class="glyphicon sort-icon" ng-show="sortKey=='apellido'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+        <th ng-click="sort('nombre');reverseSort = !reverseSort">Nombre
+          <span class="glyphicon sort-icon" ng-show="sortKey=='nombre'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+        <th ng-click="sort('email');reverseSort = !reverseSort">Email
+          <span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+
+        <th>
+          <a></a>
+        </th>
+         
+      </tr>
+       
+      </thead>
+       
+      <tbody> 
+      <tr dir-paginate="usuario in usuarios|orderBy:sortKey:reverseSort|itemsPerPage: 5" ng-click="seleccion()"> 
+        <td><i class="glyphicon glyphicon-user">  </i> </td>
+        <td>{{usuario.apellido}}</td>
+         
+        <td>{{usuario.nombre}}</td>
+         
+        <td>{{usuario.email}}</td>
+         
+        <td> 
+          <button type="button" ng-click="habilitarUsuario(usuario)" ng-disabled="usuario.estado =='activo'" class="btn btn-sm btn-success">  <i
+            class="glyphicon glyphicon-ok">  </i> 
+          </button>
+          <button type="button" ng-click="confirmarDeshabilitarUsuario(usuario)" ng-disabled="usuario.estado =='inactivo'"  class="btn btn-sm btn-danger">  <i
+            class="glyphicon glyphicon-ban-circle">  </i> 
+          </button>
+           
+        </td>
+         
+      </tr>
+       
+      </tbody>
+       
+    </table>
+    <dir-pagination-controls>
+      max-size="5"
+      direction-links="true"
+      boundary-links="true" >
+    </dir-pagination-controls>
+  </div>
+   
+</div>

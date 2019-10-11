@@ -1,0 +1,138 @@
+<div class="container">
+	<div class="input-form-container">
+		<div class="div-form">
+			<div class="crop-height">
+				<img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagenPortada}}" class="scale" />
+			</div>
+
+			<h2 class="nombre-color">
+				<strong>{{ espectaculo.nombre| uppercase}}</strong>
+			</h2>
+
+			<div class="panel panel-custom">
+				<div class="panel-heading">
+					<h3 class="tamano panel-title">
+						<strong>SINOPSIS</strong>
+					</h3>
+				</div>
+				<div class="panel-body ">
+					<div class="tamano-descripcion">
+						<strong>{{ espectaculo.descripcion }}</strong>
+					</div>
+
+				</div>
+
+				<div class="panel panel-custom">
+					<div class="panel-heading">
+						<h3 class="tamano panel-title">
+							<strong>FUNCIONES</strong>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<!--<a href="#/funcion/agregar" class="btn-small btn-primary :hover">-->
+						<!--<span class="glyphicon glyphicon-plus" aria-hidden="true">Agregar Funcion</span>-->
+						<button style="margin-left: 15px" ng-show="roles=='ROLE_ADMINISTRADOR'" type="button" class="btn btn-md btn-success glyphicon glyphicon-plus" ng-click="isCollapsed = !isCollapsed">AGREGAR&nbspFUNCION...</button>
+						<!--</a> -->
+
+						<!-- 	       <div class="col-md-12" style="margin-bottom: 55px; margin-top: 25px;" collapse="isCollapsed"> -->
+						<div class="col-md-12" collapse="isCollapsed">
+							<div class="col-md-6">
+								<form>
+									<div style="display: inline-block; min-height: 290px;">
+										<datepicker ng-model="fecha" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+									</div>
+									<h4>La fecha seleccionada es :</h4>
+									<div class="row">
+										<div class="col-md-6">
+											<input type="date" class="form-control" datepicker-popup ng-model="fecha" min-date="minDate" max-date="'2016-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+
+
+											<h4>Seleccione hora</h4>
+											<input type="time" id="exampleInput" name="input" ng-model="hora" placeholder="HH:mm:ss" required />
+											<p></p>
+											<p></p>
+
+											<button style="margin-top: 15px" ng-show="roles=='ROLE_ADMINISTRADOR'" ng-click="agregar_funcion()" class="btn btn-md btn-primary :hover">
+												<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Aceptar
+											</button>
+
+										</div>
+									</div>
+
+								</form>
+							</div>
+							<div class="input-form-container">
+								<div class="col-sm-6 col-md-6 ">
+
+									<div id="form-container">
+
+										<div class="page-header text-center">
+											<h2>Sectores</h2>
+											<br>
+
+											<!-- the links to our nested states using relative paths -->
+											<!-- add the active class if the state matches our ui-sref -->
+											<div id="status-buttons" class="text-center">
+												<button class="btn btn-link" ui-sref-active="active" ui-sref="sector-crear.sectores">
+													<span>1</span> Sectores
+												</button>
+												<button class="btn btn-link" ng-disabled="disableStep2" ui-sref-active="active" ui-sref="sector-crear.filas">
+													<span>2</span> Filas
+												</button>
+												<button class="btn btn-link" ng-disabled="disableStep3" ui-sref-active="active" ui-sref="sector-crear.confirmar">
+													<span>3</span> Asientos
+												</button>
+											</div>
+										</div>
+
+										<!-- use ng-submit to catch the form submission and use our Angular function -->
+										<form id="signup-form" name="teatroForm" ng-submit="processForm()" disable-dynamic-validation="true">
+
+											<!-- our nested state views will be injected here -->
+											<div id="form-views" ui-view></div>
+										</form>
+
+									</div>
+
+									<!-- show our formData as it is being typed -->
+									<pre>{{ teatro }}</pre>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<p></p>
+					<div ng-repeat="e in datos">
+						<div class="row">
+							<div class="col-md-9">
+								<div class="col-md-5">
+									<div class="tamano-funcion">
+										<strong>{{ e.fecha | date:"fullDate" | uppercase }} a las {{ e.hora | date:"HH:mm" |uppercase}}</strong>
+									</div>
+								</div>
+								<p></p>
+							</div>
+							<div ng-hide="roles=='ROLE_ADMINISTRADOR'" class="col-md-2">
+								<button class="btn btn-bg btn-primary delete-reserva-funcion" ng-click="reservarEntrada(e)">Reservar</button>
+								<p>
+							</div>
+							<div ng-show="roles=='ROLE_ADMINISTRADOR'" class="delete-reserva-funcion col-md-2">
+								<button class="btn btn-bg btn-danger delete-reserva-funcion" ng-click="eliminarFuncion({{e}})">
+									<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>&nbspELIMINAR
+								</button>
+
+								<!--<div  ng-show="!autenticado" class="col-md-2">
+							              <button class="btn-small btn-primary :hover" ng-click="open('lg')" ><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Reservar</button>
+							            </div>-->
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>

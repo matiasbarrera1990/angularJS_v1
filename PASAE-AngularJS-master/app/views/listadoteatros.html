@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="input-form-container">
+    <a type="button" href="#/admin/agregarteatro" class="btn btn-lg pull-left btn-success">  <i
+      class="glyphicon glyphicon-plus">  </i> Crear nuevo teatro
+    </a>
+    <p></p> 
+    <table class="table table-striped">
+      <thead> 
+      <tr> 
+
+        <th ng-click="sort('nombre');reverseSort = !reverseSort">Nombre
+          <span class="glyphicon sort-icon" ng-show="sortKey=='nombre'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+        <th ng-click="sort('direccion');reverseSort = !reverseSort">Direccion
+          <span class="glyphicon sort-icon" ng-show="sortKey=='direccion'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+        <th></th>
+        <th></th>
+         
+      </tr>
+       
+      </thead>
+
+      <tbody>
+      <tr dir-paginate="teatro in teatros |orderBy:sortKey:reverseSort|itemsPerPage: 5">
+        <td>{{teatro.nombre}}</td>
+        <td>{{teatro.direccion}}</td>
+        <td>
+          <a class="btn btn-sm btn-danger"  href="#/teatro/editar/{{teatro.id}}"> <i class="glyphicon glyphicon-edit"></i> </a>
+        </td>
+        <td>
+          <button type="button" ng-click="eliminar({{teatro}})" class="btn btn-sm btn-danger"> <i
+           class="glyphicon glyphicon-remove-circle"> </i>
+         </button>
+
+       </td>
+      </tr>
+
+      </tbody>
+
+    </table>
+  <dir-pagination-controls>
+    max-size="5"
+    direction-links="true"
+    boundary-links="true" >
+  </dir-pagination-controls>
+
+  </div>
+</div>
+
+
+
+
+

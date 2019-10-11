@@ -1,0 +1,52 @@
+<!-- form-profile.html -->
+<div class="stage-rectangle">
+  <p>Escenario</p>
+</div>
+<div class="row">
+	<div class="col-xs-9 ">
+		<div ng-repeat="fila in data.sector.filas">
+			<div class="row">
+				<div class="col-xs-2">
+					Fila &nbsp; {{fila.nro_fila}}
+				</div>
+				<div class="col-xs-10">
+					<div ng-repeat="asiento in fila.asientos | orderBy:'id'">
+						<div class="seat" ng-click="seatClicked(asiento,fila)" ng-switch on="getStatus(asiento)" style="float:left">
+							<img ng-switch-when="selected"  src="images/seat_selected.png" ng-click="decSeatsSelected()" style="height: 2em;">
+	              			<img ng-switch-when="reserved" src="images/seat_reserved.png" style="height: 2em;">
+	                		<img ng-switch-default src="images/seat_available.png" ng-click="incSeatsSelected()" style="height: 2em;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br><br>
+<p></p>
+<div class="col-xs-10 vcenter" ng-show="reserva.monto >= 0">
+  <h3 class="monto-color"> Monto: ${{reserva.monto}} </h3>
+</div>
+
+<div class="row">
+
+	<div class="col-xs-6 col-xs-offset-3 vcenter vtop">
+		<button ng-click="controlSlider()" ng-disabled="seatsSelected()==false" ui-sref="reserva.metodo" class="btn btn-block btn-info">
+	     Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
+	    </button>
+	</div>
+
+
+</div>
+
+
+<!-- <div class="form-group row" style="margin-top: 30px"> -->
+<!-- <div class="col-xs-6 col-xs-offset-3"> -->
+<!--     <a ui-sref="reserva.metodo" class="btn btn-block btn-info"> -->
+<!--      Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span> -->
+<!--     </a> -->
+<!-- </div> -->
+<!-- <div class="col-xs-2" ng-show="reserva.monto > 0"> -->
+<!-- 	<h2> $ {{reserva.monto}} </h2 -->
+<!-- </div> -->
+<!-- </div> -->

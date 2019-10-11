@@ -1,0 +1,42 @@
+
+  <div class="container">
+    <div class="input-form-container">
+
+    <form class="form-horizontal col-sm-offset-3" ng-submit="editar()">
+      <fieldset>
+
+        <!-- Form Name -->
+        <legend>Editar Espectaculo</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <div class="col-md-8">
+            <input id="textinput"  ng-model="espectaculo.nombre" name="textinput" type="text"  placeholder="Ingrese un nombre" class="form-control input-md" required>
+          </div>
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+          <div class="col-md-8">
+            <textarea class="form-control" id="textarea"  ng-model="espectaculo.descripcion" placeholder="Ingrese una descripcion" required></textarea>
+          </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+          <div class="col-md-8">
+            <select class="form-control"  ng-model="espectaculo.teatroId" required>
+               <option ng-selected="teatro.id == espectaculo.teatroId" ng-repeat="teatro in teatros" value="{{teatro.id}}">{{ teatro.nombre }}</option>
+            </select>
+
+
+          </div>
+        </div>
+
+        <button  type="submit" name="submit-form" class="btn btn-lg btn-primary :hover">Finalizar Edicion</button>
+
+
+      </fieldset>
+    </form>
+</div>
+  </div>

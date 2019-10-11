@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <div class="form-group" ng-show="reserva.monto > 0">
+      <label for="monto">Monto</label>
+      <input type="text"  class="form-control" ng-model="reserva.monto" disabled="disabled" name="monto" >
+    </div>
+    <div class="form-group">
+      <label for="numtarjeta">N�mero de tarjeta</label>
+      <input type="text" disabled="disabled" class="form-control" name="numtarjeta" ng-model="reserva.numeroTarjeta" >
+    </div>
+    <div class="form-group">
+      <label for="numtarjeta">Asientos</label>
+      <input type="text" disabled="disabled" class="form-control" name="asientos" ng-model="reserva.asientos.length" >
+    </div>
+    <div class="form-group">
+      <label for="cvv">Cvv</label>
+      <input type="text" class="form-control" disabled="disabled" name="cvv" ng-model="reserva.cvv" >
+    </div>
+    <div class="form-group">
+      <label for="cuotas">Cant. de cuotas</label>
+      <input type="number" class="form-control" name="cuotas" disabled="disabled" ng-model="reserva.cuotas" >
+    </div>
+    <div class="alert alert-success" role="alert">
+      <a href="#/" class="alert-link">FELICIDADES ! Su compra ha sido exitosa !  Haz click aqui para volver a la pagina principal</a>
+
+    </div>
+
+
+  </div>
+
+</div>

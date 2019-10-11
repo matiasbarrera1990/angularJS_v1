@@ -1,0 +1,40 @@
+<div class="container">
+
+
+  <div style="background: black;color:white;margin-top:40px;border-radius:10px;">
+
+    <h3 ng-show="busqueda" style="padding:7px; margin-bottom: 25px"><strong>RESULTADOS DE BUSQUEDA: &nbsp <span style="font-family: 'Arial Black'">"{{busqueda}}"</span></strong></h3>
+
+    <h3 ng-show="!busqueda" style="padding:7px; margin-bottom: 25px"><strong>RESULTADOS DE BUSQUEDA PARA LAS FECHAS SELECCIONADAS:</strong></h3>
+
+  </div>
+
+
+    <div class="row">
+      <div  ng-repeat="espectaculo in espectaculos2 track by espectaculo.id" class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-2  col-xs-9 col-xs-offset-2 nopadding">
+
+        <div class="hovereffect">
+          <img ng-src="data:image/jpeg;base64,{{espectaculo.bytesImagen}}" width="300px" height="400px"/>
+          <div class="overlay">
+            <h2>{{espectaculo.nombre}}</h2>
+            <div>{{espectaculo.descripcion | limitstringlenght}}</div>
+            <a class="delete" ng-show="roles=='ROLE_ADMINISTRADOR'" href="" ng-click="eliminar({{espectaculo}})"  class="btn btn-lg btn-danger" data-toggle="modal" data-target="#confirm-delete" role="button"> <span class="glyphicon glyphicon-erase"></span> Eliminar  </a>
+            <a class="info" href="#/espectaculo/info/{{espectaculo.id}}" class="btn btn-info btn-lg" role="button">
+              <span class="glyphicon glyphicon-info-sign"></span> Más información
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div ng-if="!espectaculos2.length">
+
+    <strong class="strongTitle notfoundtext"> No se han encontrado resultados de la búsqueda ingresada.
+      Te sugerimos intentar con otra palabra o un rango de fechas diferente. </strong>
+
+  </div>
+</div>
+
+
+</div>
+</div>

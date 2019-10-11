@@ -1,0 +1,207 @@
+<!doctype html>
+<html class="no-js" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8_spanish_ci">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/espectaculo.css">
+    <link rel="stylesheet" href="styles/funcion.css">
+    <link rel="stylesheet" href="styles/loading-bar.css">
+    <link rel="stylesheet" href="assets/styles/styles.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="pasaeAngularJsApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="header" ng-controller="HeaderCtrl">
+        <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+		    <div class="container-fluid">
+		        <div class="navbar-header">
+		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+		                <span class="sr-only">Toggle navigation</span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+		            <div class="dropdown navbar-brand text-danger">
+			          <span style="color: #f44d3c;font-size:23px;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TicketYA <span class="caret"></span></span>
+			          <ul class="dropdown-menu">
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a ui-sref="sector-crear.sectores" >Crear Sector</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR' || roles=='ROLE_EMPLEADO'"><a href="#/espectaculo/agregar" >Agregar Espectaculo</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoteatros">Listado de Teatros</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR' || roles=='ROLE_EMPLEADO'"><a href="#/admin/listadoespectadores" >Listar Espectadores</a></li>
+			            <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/admin/listadoempleados" >Listar Empleados</a></li>
+                  <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/estadistica/ventaspormes" >Estadisticas de Ventas Realizadas</a></li>
+                  <li  ng-show="roles=='ROLE_ADMINISTRADOR'"><a href="#/estadistica/ventasdeespectaculos" >Estadisticas de Espectaculos Vendidos</a></li>
+                  <li role="separator" class="divider"></li>
+			            <li  ng-show="roles== 'ROLE_ESPECTADOR'"><a href="#/espectador/miscompras" >Listar Compras </a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="#/">Home</a></li>
+			          </ul>
+			        </div>
+		        </div>
+		        <div class="navbar-collapse collapse" id="navbar">
+		            <ul class="nav navbar-nav">
+	                  <li><a href="#/categorias/Comedia_Comedia Musical">Comedia/Comedia Musical</a></li>
+	                  <li><a href="#/categorias/Drama">Drama</a></li>
+	                  <li><a href="#/categorias/Infantiles">Infantiles</a></li>
+	                  <li><a href="#/categorias/Recitales_deportes">Recitales/Deportes</a></li>
+	                  <li><a href="#/categorias/Opera_Clasica_Ballet">Opera/Clasica/Ballet</a></li>
+	                  <li ><a style="cursor:pointer;"><span class="glyphicon glyphicon-calendar" ng-click="open('lg')"></span> Calendario</a></li>
+	                  <li>&nbsp;</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li ng-hide="authenticated"><a style="cursor:pointer;" ng-click="register()"><i class="fa fa-heart-o fa-lg"></i><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
+                  <li ng-hide="authenticated"><a style="cursor:pointer;" ng-click="login()"><i class="fa fa-heart-o fa-lg"></i><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
+		              <li ng-show="authenticated"><a  ng-href="#/profile"><i class="fa fa-heart-o fa-lg"></i>{{username}}</a></li>
+		              <li ng-show="authenticated"><a  ng-href="#/" ng-click="logout()"><i class="fa fa-heart-o fa-lg"></i><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a></li>
+		            </ul>
+		        </div>
+		    </div>
+		</nav>
+   	</div>
+
+
+<!--     <div class="container"> -->
+<!--     <div ng-view></div> -->
+<!--     </div> -->
+	<div class="container">
+	    <div ui-view></div>
+	</div>
+
+
+	<footer id="footer">
+	    <div class="container body-content">
+	        <div class="row">
+	            <div class="col-xs-6 col-sm-6 col-md-3 column">
+	                <h4>Information</h4>
+	                <ul class="nav">
+	                    <li><a href="about-us.html">Products</a></li>
+	                    <li><a href="about-us.html">Services</a></li>
+	                    <li><a href="about-us.html">Benefits</a></li>
+	                    <li><a href="elements.html">Developers</a></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-6 col-md-3 column">
+	                <h4>Follow Us</h4>
+	                <ul class="nav">
+	                    <li><a href="#">Twitter</a></li>
+	                    <li><a href="#">Facebook</a></li>
+	                    <li><a href="#">Google+</a></li>
+	                    <li><a href="#">Pinterest</a></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-6 col-md-3 column">
+	                <h4>Contact Us</h4>
+	                <ul class="nav">
+	                    <li><a href="#">Email</a></li>
+	                    <li><a href="#">Headquarters</a></li>
+	                    <li><a href="#">Management</a></li>
+	                    <li><a href="#">Support</a></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-6 col-md-3 column">
+	                <h4>Customer Service</h4>
+	                <ul class="nav">
+	                    <li><a href="#/aboutus">About Us</a></li>
+	                    <li><a href="#">Delivery Information</a></li>
+	                    <li><a href="#">Privacy Policy</a></li>
+	                    <li><a href="#">Terms &amp; Conditions</a></li>
+	                </ul>
+	            </div>
+	        </div>
+	        <!--/row-->
+	        <p class="text-right">©2015</p>
+	    </div>
+	</footer>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
+    <script src="bower_components/angular-file-model/angular-file-model.js"></script>
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-auto-validate/dist/jcs-auto-validate.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
+    <script src="bower_components/highcharts-release/highcharts.js"></script>
+    <script src="bower_components/highcharts-release/highcharts-more.js"></script>
+    <script src="bower_components/highcharts-release/modules/exporting.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angularjs-filters/index.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/usuario.js"></script>
+        <script src="scripts/controllers/error.js"></script>
+        <script src="scripts/controllers/espectaculo.js"></script>
+        <script src="scripts/controllers/categoria.js"></script>
+        <script src="scripts/controllers/teatro.js"></script>
+        <script src="scripts/controllers/funcion.js"></script>
+        <script src="scripts/controllers/sector.js"></script>
+        <script src="scripts/controllers/reserva.js"></script>
+        <script src="scripts/controllers/compra.js"></script>
+        <script src="scripts/controllers/estadistica.js"></script>
+        <script src="scripts/interceptors/error.js"></script>
+        <script src="scripts/services/session.js"></script>
+        <script src="scripts/services/espectaculo.js"></script>
+        <script src="scripts/services/usuario.js"></script>
+        <script src="scripts/services/categoria.js"></script>
+        <script src="scripts/services/teatro.js"></script>
+        <script src="scripts/services/funcion.js"></script>
+        <script src="scripts/services/sector.js"></script>
+        <script src="scripts/services/venta.js"></script>
+        <script src="scripts/services/estadistica.js"></script>
+
+    <script src="/assets/scripts/angular-locale_es-es.js"></script>
+
+
+
+    <!-- endbuild -->
+</body>
+</html>

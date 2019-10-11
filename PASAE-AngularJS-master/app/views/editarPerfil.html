@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="input-form-container">
+    <div class="row">
+      <form class="form-horizontal col-sm-offset-3 col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control input-lg" ng-model="usuario.nombre" placeholder="Nombre"/>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control input-lg" ng-model="usuario.apellido" placeholder="Apellido"/>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control input-lg" ng-model="usuario.email" placeholder="Email"/>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control input-lg" ng-model="usuario.password" placeholder="Password"/>
+        </div>
+        <div class="form-group">
+          <select class="form-control input-lg" ng-model="usuario.rol">
+            <option value="" disabled selected>Select your option</option>
+            <option value="ROLE_EMPLEADO">Empleado</option>
+            <option value="ROLE_ADMINISTRADOR">Administrador</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button ng-click="editar()" class="btn btn-danger btn-lg btn-block">Editar usuario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

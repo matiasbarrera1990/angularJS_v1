@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="input-form-container">
+    <div class="row">
+      <form class="addStyle form-horizontal col-sm-offset-3 col-md-6" ng-submit="editar()">
+
+
+        <!-- Text input-->
+        <div class="form-group">
+
+          <input id="input-nombre" class="form-control input-lg" ng-model="teatro.nombre" name="textinput" type="text"
+                 placeholder="Ingrese un nombre" class="form-control input-md" required>
+
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+
+          <input id="input-direccion" class="form-control input-lg" ng-model="teatro.direccion" name="textinput"
+                 type="text" placeholder="Ingrese un direccion" class="form-control input-md" required>
+
+        </div>
+        <div class="form-group">
+          <button type="submit" name="submit-form" class="btn btn-danger btn-lg btn-block">Finalizar Edicion</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

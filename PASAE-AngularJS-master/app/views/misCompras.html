@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="input-form-container"> 
+    <h2 style="color: white;"> MIS COMPRAS</h2>
+    <strong><h3 class="color-titulo">A continuación te mostramos el detalle de las últimas compras que realizaste</h3>
+    </strong>
+    <div dir-paginate="compra in compras|itemsPerPage: 5" class="panel panel-primary">
+      <div style="padding:5px;" class="panel-heading">
+        <div class="panel-title"><h3><strong>{{compra.nombreEspectaculo|uppercase}}</strong></h3></div>
+        {{compra.funcion.fecha| date:'fullDate'| uppercase}} a las {{compra.funcion.hora| date:'"HH:mm'|uppercase}}
+      </div>
+      <div class="panel-body">
+        <div class="row compra-padding">
+          <strong>&nbsp Precio: </strong>${{compra.monto }}
+        </div>
+        <div class="row compra-padding">
+          <strong>&nbsp Fecha: </strong>{{compra.fecha| date:'fullDate'|uppercase}} a las {{ compra.hora| date:'"HH:mm'|uppercase }}
+        </div>
+        <div class="row compra-padding">
+          <strong>&nbsp Cantidad de Asientos: </strong> {{ compra.asientos.length}}
+
+
+        </div>
+
+
+      </div>
+    </div>
+    <dir-pagination-controls>
+      max-size="5"
+      direction-links="true"
+      boundary-links="true" >
+    </dir-pagination-controls>
+  </div>
+

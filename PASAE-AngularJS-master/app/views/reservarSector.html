@@ -1,0 +1,33 @@
+
+
+<div class="row">
+	<div class="col-xs-6 col-xs-offset-3">
+		<div class="form-group">
+		    <span style="font-size: 22px"><label for="espectaculo">Espectáculo : {{data.espectaculo.nombre}}</label></span>
+		</div>
+		<div class="form-group" style="font-size: 18px">
+		    <label for="funcion">Fecha : {{data.funcion.fecha}} </label>
+        <br>
+        <label for="funcion">Hora : {{data.funcion.hora}}</label>
+		</div>
+		<div class="form-group">
+		    <span style="font-size: 16px"><label for="sector">Sector</label></span>
+	    	<select class="form-control" name="nombreSector" ng-model="data.sector"
+                ng-options="sector as sector.nombre for sector in data.sectores" required>
+                <option value="" disabled>- Seleccione sector -</option>
+        </select>
+		</div>
+	</div>
+</div>
+
+<div class="form-group row " style="margin-top: 30px">
+	<div class="col-xs-6 col-xs-offset-3">
+    <button ng-click="controlSlider()" ng-disabled="reservaForm.nombreSector.$error.required" ui-sref="reserva.seleccion" class="btn btn-block btn-info">
+      Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </button>
+
+   <!-- <a ui-sref="reserva.seleccion" class="btn btn-block btn-info">
+	     Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>-->
+	</div>
+</div>
